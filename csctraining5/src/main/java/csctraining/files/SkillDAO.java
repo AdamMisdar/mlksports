@@ -46,15 +46,19 @@ public class SkillDAO{
         }
     }
 
-    public boolean updateskill(Skill bean) throws SQLException {
+    public boolean updateskill(Skill skill) throws SQLException {
         boolean rowUpdated;
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("UPDATE space SET skillName=?,skillType=?, skillDesc=?, skillPrice=? where skillID=?");)
+             PreparedStatement ps = connection.prepareStatement("UPDATE skills SET skillName=?,skillType=?, skillDesc=?, skillPrice=? where skillID=?"))
         {
-            ps.setString(1, bean.getSkillName());
-			ps.setString(2, bean.getSkillType());
-			ps.setString(3, bean.getSkillDesc());
-            ps.setInt(4, bean.getSkillID());
+            ps.setString(1, skill.getSkillName());
+			ps.setString(2, skill.getSkillType());
+			ps.setString(3, skill.getSkillDesc());
+            ps.setDouble(4, skill.getSkillPrice());
+            ps.setInt(5, skill.getSkillID());
+            
+            System.out.println(skill.getSkillID());
+
 
             rowUpdated = ps.executeUpdate() > 0;
         }

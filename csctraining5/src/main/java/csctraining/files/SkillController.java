@@ -74,6 +74,7 @@ public class SkillController extends HttpServlet {
     private void updateskill(HttpServletRequest request, HttpServletResponse response)throws SQLException, IOException {
         HttpSession session = request.getSession();
         Skill skill = new Skill();
+        skill.setSkillID(Integer.parseInt(request.getParameter("skillid")));
         skill.setSkillName(request.getParameter("skillName"));
         skill.setSkillDesc(request.getParameter("skillDesc"));
         skill.setSkillType(request.getParameter("skillType"));
