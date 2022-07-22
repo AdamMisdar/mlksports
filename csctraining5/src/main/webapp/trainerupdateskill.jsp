@@ -51,15 +51,17 @@
 		    from skills
 		    WHERE skillid=<%=rs.getInt("skillid")%>
 </sql:query>
+<%-- 
 <%=rs.getInt("skillid")%>
 <%=rs.getInt("skillid")%>
 <%=rs.getInt("skillid")%>
 ${skill.skillID}
 ${skill.skillID}
 ${skill.skillID}
-
-
+--%>
+<%-- 
 	<input type="text" name="skillid" value="<%=rs.getInt("skillid")%>">
+	--%>
 	<%} %>
 		
 	<section>

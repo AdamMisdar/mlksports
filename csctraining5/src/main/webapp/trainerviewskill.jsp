@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>update skill</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -26,26 +27,64 @@
 	<sql:query dataSource="${ic}" var="skill">
     SELECT * from skills
 </sql:query>
-	<a href="homepagetrainer.jsp">homepage</a>
-	<a href="trainerviewskill.jsp">view skill</a>
-	<a href="trainerviewaccount.jsp">view account</a>
-	<a href="trainerviewtraining.jsp">view training</a>
+
+<input type="checkbox" id="check">
+<!--header area start-->
+<header>
+  <label for="check">
+    <i class="fas fa-bars" id="sidebar_btn"></i>
+  </label>
+  <div class="left_area">
+    <h3>MLK SPORT </h3>
+  </div>
+
+</header>
+<!--header area end-->
+<!--mobile navigation bar start-->
+<div class="mobile_nav">
+  <div class="nav_bar">
+    <img src="logo.png" class="mobile_profile_image" alt="">
+    <i class="fa fa-bars nav_btn"></i>
+  </div>
+ 
+ 
+</div>
+<!--mobile navigation bar end-->
+<!--sidebar start-->
+<div class="sidebar">
+  <div class="profile_info">
+    <img src="logo.png" class="profile_image" alt="">
+   
+  </div>
+  <a href="homepagetrainer.jsp"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="trainerviewtraining.jsp"><i class="fas fa-clipboard-list"></i><span>Training</span></a>
+    <a href="trainerviewskill.jsp"><i class="fas fa-list-alt"></i><span>Skill</span></a>
+   
+    <a href="trainerviewaccount.jsp"><i class="fas fa-users-cog"></i><span>Account</span></a>
+    <a href="trainerviewclient.jsp"><i class="fas fa-users"></i><span>Client</span></a>
+   
+    <a href="LoginHandler?action=logout" onclick="checkerlogout()" id="logout" onclick="location.href='LoginHandler?action=logout'"><i class="fas fa-sign-out-alt"></i><span> Log Out</span></a>
+  
+  
+</div>
 	
 	<section>
-
-		<header>View skill</header>
-		<c:forEach var="skill" items="${skill.rows}">
+	<div class="content">
+    <h1>SKILL LIST</h1>
+    <div class="content-container">
+		
 			<form method="post">
-				<table>
+				<table class="content-table">
 					<tr>
 						<th>NO.</th>
 						<th>skill Name</th>
-						<th>SKill description</th>
+						<th>Skill Description</th>
 						<th>Type</th>
-						<th>Skill price</th>
+						<th>Skill Price</th>
 						<th>Update</th>
-						<th>delete</th>
+						<th>Delete</th>
 					</tr>
+					<c:forEach var="skill" items="${skill.rows}">
 					<tr>
 
 						<td>${skill.skillID}</td>
@@ -55,16 +94,19 @@
 						<td>${skill.skillPrice}</td>
 						<td>
 							<button name="update" formaction="trainerupdateskill.jsp?id=${skill.skillID}">
-							</button>
+							Update</button>
 						</td>
 						<td><input type="hidden" name="action" value="deleteskill">
-							<button formaction="SkillController"
+							<button class="buttondelete" formaction="SkillController"
 								onclick="return confirm('Confirm to delete this skill option?')">Delete</button>
 						</td>
 					</tr>
+					</c:forEach>
 				</table>
 			</form>
-		</c:forEach>
+			</div>
+			</div>
+		
 	</section>
 
 </body>
